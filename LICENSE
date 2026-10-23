@@ -1,0 +1,11 @@
+Copyright (c) 2026. All rights reserved.
+
+This software is proprietary. It is delivered to the client under the terms
+of the engagement and may not be copied, modified, distributed or sublicensed
+except as permitted by that agreement.
+
+Third-party components:
+- Volatility 3 is distributed under the Volatility Software License 1.0
+  (https://www.volatilityfoundation.org/license/vsl-v1.0).
+- The kernel symbol tables in symbols/windows/ come from the Volatility
+  Foundation symbol packs and are covered by their original license.

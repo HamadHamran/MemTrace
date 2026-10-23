@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="card">
+  <h1>New Analysis</h1>
+  <p class="muted">Upload a Windows RAM image or choose one already stored in the evidence folder. The original file is hashed before and after analysis and is never modified.</p>
+  <form method="post" action="{{ url_for('analyze') }}" enctype="multipart/form-data" class="form">
+    <label class="field">
+      <span>Upload memory image</span>
+      <input type="file" name="dump" accept="{{ extensions|join(',') }}">
+      <small class="muted">Supported: {{ extensions|join(', ') }}</small>
+    </label>
+    <div class="divider">or</div>
+    <label class="field">
+      <span>Select from evidence folder</span>
+      <select name="existing">
+        <option value="">-- choose a file --</option>
+        {% for name in evidence %}<option value="{{ name }}">{{ name }}</option>{% endfor %}
+      </select>
+    </label>
+    <button type="submit" class="btn">Start Analysis</button>
+  </form>
+</section>
+
+<section class="card">
+  <h2>Cases</h2>
+  {% if cases %}
+  <table class="table">
+    <thead><tr><th>Case ID</th><th>Evidence</th><th>Status</th><th>Verdict</th><th>Score</th></tr></thead>
+    <tbody>
+      {% for c in cases %}
+      <tr>
+        <td><a href="{{ url_for('case', case_id=c.id) }}">{{ c.id }}</a></td>
+        <td>{{ c.evidence or '-' }}</td>
+        <td><span class="pill state-{{ c.state }}">{{ c.state }}</span></td>
+        <td>{{ c.verdict or '-' }}</td>
+        <td>{{ c.score if c.score is not none else '-' }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p class="muted">No cases yet.</p>
+  {% endif %}
+</section>
+{% endblock %}

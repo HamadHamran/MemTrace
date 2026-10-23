@@ -1,0 +1,52 @@
+:root {
+  --bg: #0f172a; --panel: #111827; --card: #1f2937; --ink: #e5e7eb; --muted: #9ca3af; --line: #374151;
+  --accent: #38bdf8; --critical: #991b1b; --high: #dc2626; --medium: #d97706; --low: #2563eb; --info: #6b7280; --ok: #15803d;
+}
+* { box-sizing: border-box; }
+body { margin: 0; font-family: "Segoe UI", system-ui, sans-serif; background: var(--bg); color: var(--ink); }
+a { color: var(--accent); text-decoration: none; }
+.topbar { display: flex; align-items: baseline; gap: 16px; padding: 14px 32px; background: var(--panel); border-bottom: 1px solid var(--line); }
+.brand { font-size: 22px; font-weight: 700; color: var(--ink); }
+.brand span { color: var(--accent); }
+.tagline, .muted { color: var(--muted); }
+.container { max-width: 1100px; margin: 24px auto; padding: 0 16px; }
+.footer { text-align: center; color: var(--muted); font-size: 13px; padding: 24px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 20px 24px; margin-bottom: 20px; }
+.card.error { border-color: var(--high); }
+h1 { margin: 0 0 8px; font-size: 24px; }
+h2 { margin: 0 0 12px; font-size: 18px; }
+.alert { background: #422006; border: 1px solid var(--medium); padding: 10px 14px; border-radius: 8px; margin-bottom: 16px; }
+.form { display: grid; gap: 14px; max-width: 520px; }
+.field { display: grid; gap: 6px; }
+input[type=file], select { background: var(--panel); color: var(--ink); border: 1px solid var(--line); border-radius: 6px; padding: 8px; }
+.divider { color: var(--muted); text-align: center; }
+.btn { display: inline-block; background: var(--accent); color: #0b1220; border: 0; border-radius: 6px; padding: 10px 18px; font-weight: 600; cursor: pointer; }
+.btn.ghost { background: transparent; color: var(--accent); border: 1px solid var(--accent); }
+.table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.table th, .table td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+.table th { color: var(--muted); font-weight: 600; }
+.table tr.flagged td { background: rgba(220, 38, 38, 0.15); }
+.scroll { overflow-x: auto; max-height: 520px; overflow-y: auto; }
+.pill { display: inline-block; padding: 2px 8px; border-radius: 999px; font-size: 12px; font-weight: 700; text-transform: uppercase; background: var(--info); color: #fff; }
+.sev-critical { background: var(--critical); } .sev-high { background: var(--high); } .sev-medium { background: var(--medium); }
+.sev-low { background: var(--low); } .sev-info { background: var(--info); }
+.state-done { background: var(--ok); } .state-error { background: var(--high); } .state-running, .state-queued { background: var(--medium); }
+.case-head { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 16px; }
+.actions { display: flex; gap: 10px; }
+.summary { display: grid; grid-template-columns: 2fr repeat(5, 1fr); gap: 12px; margin-bottom: 20px; }
+.verdict, .stat { border-radius: 10px; padding: 14px; display: grid; gap: 4px; color: #fff; }
+.verdict { background: var(--info); }
+.verdict strong { font-size: 22px; }
+.stat strong { font-size: 28px; }
+.label { font-size: 12px; text-transform: uppercase; opacity: .85; }
+.verdict-compromised { background: var(--critical); } .verdict-likely-compromised { background: var(--high); }
+.verdict-suspicious { background: var(--medium); } .verdict-no-significant-findings { background: var(--ok); }
+.kv { display: grid; grid-template-columns: 180px 1fr; gap: 6px 16px; margin: 0; }
+.kv dt { color: var(--muted); } .kv dd { margin: 0; word-break: break-all; }
+.mono, pre { font-family: Consolas, monospace; font-size: 13px; }
+pre { white-space: pre-wrap; }
+.finding { border: 1px solid var(--line); border-radius: 8px; padding: 10px 14px; margin-bottom: 10px; background: var(--panel); }
+.finding summary { cursor: pointer; }
+.progress { height: 12px; background: var(--panel); border-radius: 999px; overflow: hidden; margin: 12px 0; }
+.bar { height: 100%; background: var(--accent); transition: width .4s; }
+@media (max-width: 760px) { .summary { grid-template-columns: repeat(2, 1fr); } .verdict { grid-column: span 2; } .kv { grid-template-columns: 1fr; } }

@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}MemTrace{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="{{ url_for('index') }}">Mem<span>Trace</span></a>
+    <span class="tagline">Memory Forensics Analyzer</span>
+  </header>
+  <main class="container">
+    {% with messages = get_flashed_messages() %}
+      {% for message in messages %}<div class="alert">{{ message }}</div>{% endfor %}
+    {% endwith %}
+    {% block content %}{% endblock %}
+  </main>
+  <footer class="footer">MemTrace v1.0 &middot; Powered by Volatility 3</footer>
+  {% block scripts %}{% endblock %}
+</body>
+</html>
